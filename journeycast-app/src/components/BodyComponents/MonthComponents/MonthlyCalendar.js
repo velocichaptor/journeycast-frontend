@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MonthDayCard from "./MonthDayCard";
 import moment from "moment";
-import "./CalendarStyles.css";
-import BuildCalendar from "./BuildCalendar";
-import Header from "./CalendarHeader"
+import "./MonthlyCalendarStyles.css";
+import BuildCalendar from "./BuildMonthlyCalendar";
+import Header from "./MonthlyCalendarHeader"
 
 function MonthCalendar() {
   const [calendar, setCalendar] = useState([]);
