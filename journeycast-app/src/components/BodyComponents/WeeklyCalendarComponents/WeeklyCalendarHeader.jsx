@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 function calendarHeader({ value, setValue }) {
 
@@ -24,15 +24,9 @@ function calendarHeader({ value, setValue }) {
 
   return (
     <div className="header">
-      <div className="previous" onClick={() => !thisMonth() && setValue(previousMonth())}>
-        {!thisMonth() ? String.fromCharCode(171) : null}
-      </div>
-      <div className="current">
-        {currentMonth()} {currentYear()}
-      </div>
-      <div className="next" onClick={() => setValue(nextMonth())}>
-        {String.fromCharCode(187)}
-      </div>
+      <div className="previous"></div>
+      <div className="current">Selected Week</div>
+      <div className="next"></div>
     </div>
   );
 }

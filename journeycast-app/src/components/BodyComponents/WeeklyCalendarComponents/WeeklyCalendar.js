@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MonthDayCard from "./MonthDayCard";
 import moment from "moment";
-import "./CalendarStyles.css";
-import BuildCalendar from "./BuildCalendar";
-import Header from "./CalendarHeader"
+import "./WeeklyCalendarStyles.css";
+import BuildCalendar from "./BuildWeeklyCalendar";
+import Header from "./WeeklyCalendarHeader"
 
 function MonthCalendar() {
   const [calendar, setCalendar] = useState([]);
@@ -34,7 +33,7 @@ function MonthCalendar() {
   }
   
   return (
-    <div className="calendar">
+    <div className="weeklyCalendar">
       <Header value={value} setValue={setValue} />
       <div className="body">
       <div className="day-names">
