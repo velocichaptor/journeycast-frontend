@@ -1,5 +1,5 @@
 import React from "react";
-import MonthCalendar from './MonthDayCard'
+import MonthDayCard from './MonthDayCard'
 
 function MonthCalendar() {
 
