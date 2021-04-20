@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --black: rgb(58, 58, 58);
+  --grey: rgb(205, 205, 205);
+  --white: rgb(240, 240, 240);
+  --red: rgb(102, 255, 235);
+  --light-blue: rgb(102, 255, 235);
+  /* --font-light: "AirbnbCerealLight", sans-serif;
+  --font-book: "AirbnbCerealBook", sans-serif;
+  --font-black: "AirbnbCerealBlack", sans-serif; */
+  color: var(--black);
+  font-family: var(--font-light);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
