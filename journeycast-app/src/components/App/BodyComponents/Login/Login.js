@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Signup from "./Signup"
+import SignUp from "./SignUp"
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 const endpoint = "http://localhost:3090/users"
 
@@ -26,7 +26,7 @@ function Login() {
 
 return (
     <div>  
-      { signup ? <Signup loginHandle={loginHandle}/> :
+      { signup ? <SignUp loginHandle={loginHandle}/> :
        ( <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
       <Grid.Column>
