@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from "react";
 import SignUp from "./SignUp"
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
-const endpoint = "http://localhost:3090/users"
+const endpoint = "http://localhost:3000/users"
 
 function Login() {
-
   const [signup, setSignup] = useState(false)
 
   useEffect(() => {

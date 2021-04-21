@@ -11,10 +11,10 @@ function FetchCalendarData() {
   useEffect(() => {
     fetch(`http://localhost:4000/vacations`)
       .then((r) => r.json())
-      .then((data) => test(data)) 
+      .then((data) => vacationDataFunction(data)) 
   }, []);
 
-  function test(data){
+  function vacationDataFunction(data){
     setVacationData(data)
     console.log(vacationData)
   }

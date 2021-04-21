@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
-const userEndpoint = "http://localhost:3090/users"
+const userEndpoint = "http://localhost:3000/users"
 
 
 function Signup({loginHandle}) {
@@ -27,10 +27,8 @@ function Signup({loginHandle}) {
     })
     .then(res => res.json())
     .then(newUser => loginHandle(newUser))
-    // debugger
+    debugger
 }
-
-
 
   const submitHandler = (e) => {
       e.preventDefault()

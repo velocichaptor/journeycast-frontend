@@ -3,9 +3,10 @@ import Login from "./Login/Login";
 import WeeklyCalendar from "./Login/WeeklyCalendarComponents/RenderWeeklyCalendar";
 import MonthCalendar from "./Login/MonthComponents/RenderMonthlyCalendar";
 import { Container } from "semantic-ui-react";
+import NavBar from "./Login/NavBar/NavBar";
 
 function Body() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const [week, setSelectedWeek] = useState([]);
   const [vacationData, setVacationData] = useState([]);
 
@@ -23,19 +24,29 @@ function Body() {
     setSelectedWeek(selectedWeek);
   }
 
+  function loginToggle() {
+    setLogin(login => !login);
+  }
+
   return (
     <div>
-      {/* {login ? ( */}
-        <MonthCalendar
-          vacation={vacationData}
-          setSelectedWeekFunction={setSelectedWeekFunction}
-        />,
-        <WeeklyCalendar week={week}/>
+      {login ? (
+        <div>
+          <NavBar />
+          <MonthCalendar
+            vacation={vacationData}
+            setSelectedWeekFunction={setSelectedWeekFunction}
+          />
+          <WeeklyCalendar week={week} />
+        </div>
       ) : (
-        {/* <Login /> */}
+        <Login loginToggle={loginToggle}/>
       )}
       <Container>
-        {/* <img class="ui fluid image" src="https://www.uaf.edu/oip/travelalerts/Travel-Alerts-Page-Picture.jpg"></img> */}
+        <img
+          class="ui fluid image"
+          src="https://www.uaf.edu/oip/travelalerts/Travel-Alerts-Page-Picture.jpg"
+        ></img>
       </Container>
     </div>
   );

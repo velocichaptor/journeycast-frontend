@@ -1,6 +1,6 @@
 import React from "react";
 import "./NavBarStyles.css";
-import NewVacationForm from "./NewVacationForm";
+import NewVacationForm from "./Forms/NewVacationForm";
 // import logo from '/Users/bleakchandler/Flatiron/projects/Phase 4/journeycast-frontend/journeycast-app/src/logo.png'; // with import
 
 function NavBar() {

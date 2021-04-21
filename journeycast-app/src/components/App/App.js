@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import logo from './logo.svg';
-import NavBar from "./NavBar/NavBar";
+import NavBar from "./BodyComponents/Login/NavBar/NavBar";
 import Body from "./BodyComponents/Body";
 import MonthCalendar from "./BodyComponents/Login/MonthComponents/RenderMonthlyCalendar";
 import WeeklyCalendar from "./BodyComponents/Login/WeeklyCalendarComponents/RenderWeeklyCalendar";
@@ -8,38 +8,10 @@ import WeeklyCalendar from "./BodyComponents/Login/WeeklyCalendarComponents/Rend
 import "./App.css";
 
 function App() {
-  const [week, setSelectedWeek] = useState([]);
-  const [vacationData, setVacationData] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:4000/vacations`)
-      .then((r) => r.json())
-      .then((data) => monthCalendarData(data));
-  }, []);
-
-  function monthCalendarData(data) {
-    setVacationData(
-      // <MonthCalendar
-        // key={vacationData.id}
-        // setSelectedWeekFunction={setSelectedWeekFunction}
-      // />,
-    );
-  }
-
-  function setSelectedWeekFunction(selectedWeek) {
-    setSelectedWeek(selectedWeek);
-  }
-  
 
   return (
     <div className="App">
-      <div>
-        <NavBar />
-
-      </div>
-      <div>
         <Body />
-      </div>
     </div>
   );
 }
