@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import React from "react";
-import SignUp from "./SignUp"
-import WeeklyCalendar from "./WeeklyCalendarComponents/WeeklyCalendar"
-import MonthCalendar from "./MonthComponents/MonthlyCalendar"
-=======
 import React, {useState} from "react";
 import Login from "./Login"
 import { Container } from 'semantic-ui-react'
 import WeeklyCalendar from "./WeekComponents/WeeklyCalendar"
 import MonthCalendar from "./MonthComponents/MonthCalendar"
->>>>>>> navbarstart
 
 
 
