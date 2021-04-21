@@ -10,8 +10,17 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       <WeeklyCalendar />
       <MonthCalendar />
+=======
+      <div>
+        <NavBar />
+      </div>
+      <div>
+        <Body />
+      </div>
+>>>>>>> navbarstart
     </div>
   );
 }
