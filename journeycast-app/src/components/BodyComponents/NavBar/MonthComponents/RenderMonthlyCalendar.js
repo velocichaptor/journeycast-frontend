@@ -5,9 +5,12 @@ import BuildCalendar from "./BuildMonthlyCalendar";
 import Header from "./MonthlyCalendarHeader";
 
 function MonthCalendar({ setSelectedWeekFunction, vacation }) {
-  const { vacation_days } = vacation;
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
+
+  const test = vacation.map((vacationObj) =>
+    console.log(vacationObj.vacation_days)
+  );
 
   function handleSelectedWeek(week) {
     setSelectedWeekFunction(week);
@@ -29,19 +32,19 @@ function MonthCalendar({ setSelectedWeekFunction, vacation }) {
   //   return day.isSame(new Date(), "day");
   // }
 
-  function isVacationDay(day) {
-    for (var index = 0; index < vacation_days.length; index++) {
-      if (day.isSame(vacation_days[index], "day")) {
-        return true;
-      }
-    }
-  }
+  // function isVacationDay(day) {
+  //   for (var index = 0; index < vacation_days.length; index++) {
+  //     if (day.isSame(vacation_days[index], "day")) {
+  //       return true;
+  //     }
+  //   }
+  // }
 
   function dayStyles(day) {
     if (beforeToday(day)) return "before";
     if (isSelected(day)) return "selected";
     // if (isToday(day)) return "today";
-    if (isVacationDay(day)) return "vacationDay";
+    // if (isVacationDay(day)) return "vacationDay";
     return "";
   }
 

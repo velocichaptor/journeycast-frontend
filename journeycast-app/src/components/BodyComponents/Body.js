@@ -1,7 +1,7 @@
 import React from "react";
 import SignUp from "./SignUp"
-import WeeklyCalendar from "./WeeklyCalendarComponents/RenderWeeklyCalendar"
-import MonthCalendar from "./MonthComponents/RenderMonthlyCalendar"
+import WeeklyCalendar from "./NavBar/WeeklyCalendarComponents/RenderWeeklyCalendar"
+import MonthCalendar from "./NavBar/MonthComponents/RenderMonthlyCalendar"
 
 function Body() {
 

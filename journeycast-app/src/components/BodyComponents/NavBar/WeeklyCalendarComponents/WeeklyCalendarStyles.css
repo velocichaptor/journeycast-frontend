@@ -13,16 +13,20 @@
 } */
 
 .weeklyCalendar {
-  box-sizing: border-box;
-  font-size: 1rem;
-  position: fixed;
-  width: 600px;
-  height: -10px;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0;
+  position:relative;
   font-family: 'Titillium Web', sans-serif;
-  font-style: bold;
+  font-style: normal;
+  left: 400px;  
+  max-width: 1300px;
+
+  /* box-sizing: border-box;
+  font-size: 1rem;
+  max-width: 400px;
+  position:relative;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: normal;
+  top: 398px; */
 }
 
 .weeklyCalendar .header {
@@ -39,7 +43,7 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  max-width: 1000px;
+  max-width: relative;
   margin: 0 auto;
   align-items: center;
 }
