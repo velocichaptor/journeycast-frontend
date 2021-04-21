@@ -1,18 +1,32 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Signup from "./Signup"
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+const endpoint = "http://localhost:3090/users"
 
 function Login() {
 
   const [signup, setSignup] = useState(false)
 
+  useEffect(() => {
+    fetch(endpoint + "/1")
+    .then(res => res.json())
+    .then(user => {
+      // console.log(transactions)
+      loginHandle(user)
+    })
+  }, [])
+
   const signupInit = () => {
     setSignup(signup => !signup)
   }
 
+  const loginHandle = (user) => {
+    return null
+  }
+
 return (
     <div>  
-      { signup ? <Signup/> :
+      { signup ? <Signup loginHandle={loginHandle}/> :
        ( <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
       <Grid.Column>

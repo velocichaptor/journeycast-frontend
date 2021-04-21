@@ -3,7 +3,7 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 const userEndpoint = "http://localhost:3090/users"
 
 
-function Signup() {
+function Signup({loginHandle}) {
 
     const [name, setName] = useState("")
     const [age, setAge] = useState("")
@@ -26,7 +26,9 @@ function Signup() {
       })
     })
     .then(res => res.json())
-    }
+    .then(newUser => loginHandle(newUser))
+    // debugger
+}
 
 
 
@@ -45,13 +47,15 @@ function Signup() {
     <h1>Sign Up Here</h1>
     <Grid columns={1} relaxed='very' stackable>
       <Grid.Column>
-        <Form>
+        <Form onSubmit={submitHandler}>
         <Form.Input
             icon='id badge'
             iconPosition='left'
             label='Name'
             type='name'
             placeholder='Name'
+            onChange={(e) => setName(e.target.value)} 
+            value={name}
           />
           <Form.Input
             icon='calendar'
@@ -59,12 +63,16 @@ function Signup() {
             label='Age'
             type='age'
             placeholder='Age'
+            onChange={(e) => setAge(e.target.value)} 
+            value={age}
           />
           <Form.Input
             icon='user'
             iconPosition='left'
             label='Username'
             placeholder='Username'
+            onChange={(e) => setUsername(e.target.value)} 
+            value={username}
           />
           <Form.Input
             icon='lock'
@@ -72,9 +80,11 @@ function Signup() {
             label='Password'
             placeholder='Password'
             type='password'
+            onChange={(e) => setPassword(e.target.value)} 
+            value={password}
           />
 
-          <Button onSubmit={submitHandler} content='Register' primary />
+          <Button content='Register' primary />
         </Form>
       </Grid.Column>
     </Grid>
