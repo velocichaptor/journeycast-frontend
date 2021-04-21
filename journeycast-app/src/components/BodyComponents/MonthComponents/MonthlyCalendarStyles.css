@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-size: 1rem;
   max-width: 400px;
-  height: 100px;
+  height: 0px;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -91,12 +91,22 @@
 }
 
 .calendar .day div.selected {
-  background: #FF5F6D;
+  background:#FFC371;
   color: white;
   font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  margin: auto;
 }
 
 .calendar .day div.today {
   background-color: #FFC371;
+  color: white;
+}
+
+.calendar .day div.vacationDay {
+  background-color: #FF5F6D;
   color: white;
 }

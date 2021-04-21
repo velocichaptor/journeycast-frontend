@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap');
 
+/* .weeklyCalendar { // old styling
+  box-sizing: border-box;
+  font-size: 1rem;
+  max-width: 1000px;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Titillium Web', sans-serif;
+  font-style: bold;
+} */
 
 .weeklyCalendar {
   box-sizing: border-box;
   font-size: 1rem;
-  max-width: 400px;
-  position: absolute;
+  position: fixed;
+  width: 600px;
+  height: -10px;
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -26,6 +38,7 @@
 .weeklyCalendar .day-names {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
   align-items: center;
@@ -53,13 +66,14 @@
 .weeklyCalendar .week {
   background-color: white;
   width: calc(100% / 7);
-  height: 44px;
+  height: px;
   line-height: 44px;
   text-align: center;
   text-transform: uppercase;
   color: var(--black);
   font-weight: 400;
 }
+
 .weeklyCalendar .week div {
   width: 100%;
 }
@@ -67,24 +81,56 @@
 .weeklyCalendar .day {
   position: relative;
   width: calc(100% / 7);
-  height: 44px;
+  height: 120px;
   display: inline-block;
-  background-color: white;
+  background-color:white;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   z-index: 1;
-  text-align: center;
+  position: relative;
 }
 
 .weeklyCalendar .day div {
-  width: 54px;
   height: 44px;
   position: relative;
   color: var(--black);
   z-index: 100;
   line-height: 44px;
+  align-items: center;
 }
+
+.weeklyCalendar .dayInfo {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: inline-block;
+  background-color:white;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  position: relative;
+
+}
+
+.weeklyCalendar .dayInfo div {
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+  line-height: 44px;
+  align-items: center;
+}
+
+/* .weeklyCalendar .day-names {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+} */
 
 .weeklyCalendar .day div.before {
   color: var(--grey);
