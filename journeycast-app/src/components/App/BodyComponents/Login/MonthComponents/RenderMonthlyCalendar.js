@@ -4,7 +4,7 @@ import "./MonthlyCalendarStyles.css";
 import BuildCalendar from "./BuildMonthlyCalendar";
 import Header from "./MonthlyCalendarHeader";
 
-function MonthCalendar({ setSelectedWeekFunction, vacation, userID }) {
+function MonthCalendar({ setSelectedWeekFunction, vacationData, userID }) {
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
   const [setsOfVacations, setSetsOfVacations] = useState([]);
@@ -12,13 +12,9 @@ function MonthCalendar({ setSelectedWeekFunction, vacation, userID }) {
   // const setsOfVacationsArray = vacation.map((vacationObj) => [
   //   ...vacationObj.vacation_days,
   // ]);
+  
+  const setsOfVacationsArray  = vacationData.filter(vacationItem => vacationItem.user_id === userID);
 
-  console.log("The user ID is", userID)
-
-
-  const setsOfVacationsArray  = vacation.filter(vacationItem => vacationItem.user_id === userID);
-
-  console.log(vacation)
 
   const userVacations = setsOfVacationsArray.map((vacationObj) => [
     ...vacationObj.vacation_days,

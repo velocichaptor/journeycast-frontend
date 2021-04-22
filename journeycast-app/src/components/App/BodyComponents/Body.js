@@ -34,9 +34,10 @@ function Body() {
     <div>
       {login ? (
         <div>
-          <NavBar userID={user} />
+          <NavBar userID={user} 
+          vacationData={vacationData}/>
           <MonthCalendar
-            vacation={vacationData}
+            vacationData={vacationData}
             setSelectedWeekFunction={setSelectedWeekFunction}
             userID={user}
           />

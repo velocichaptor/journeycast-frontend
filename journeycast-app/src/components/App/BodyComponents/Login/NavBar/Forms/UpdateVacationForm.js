@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Button, Header, Image, Modal, Form } from "semantic-ui-react";
+import { Button, Header, Dropdown, Modal, Form } from "semantic-ui-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FormStyles.css";
 
-function NewVacationForm({ userID }) {
+function NewVacationForm({ userID, vacationData }) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
 
-  console.log("start date is", startDate);
-  console.log("end date is", endDate);
+  const setsOfVacationsArray  = vacationData.filter(vacationItem => vacationItem.user_id === userID);
+
+  console.log("this user's vacations:", setsOfVacationsArray)
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -34,7 +35,7 @@ function NewVacationForm({ userID }) {
 
   const handleNewVacation = ({ title, startDate, endDate, note }) => {
     fetch(`http://localhost:3000/vacations`, {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify({
         title: title,
         user_id: userID,
@@ -58,50 +59,35 @@ function NewVacationForm({ userID }) {
     handleNewVacation({ title, note, startDate, endDate });
   };
 
+  const countryOptions = 
+  setsOfVacationsArray.map((title, id) => <option key={id}>{title}</option>);
+    // for (const property in setsOfVacationsArray) {
+    // // { key: "af", value: "af", flag: "af", text: "Afghanistan" }
+    // { key: id, value: title, text: title}
+    // }
+  
+
   return (
     <div className="App">
       <Modal
         as={Form}
-        trigger={<a>Create New Vacation</a>}
+        trigger={<a>Update Your Vacations</a>}
         size="small"
         onSubmit={submitHandler}
       >
-        <Header content="Create A New Vacation" />
+        <Header content="Update Your Vacations" />
         <Modal.Content>
-          <Form.Input
+          <Dropdown
+            placeholder="Select Country"
             fluid
-            name="Title"
-            label="Title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <DatePicker
-            name="Start Date"
-            label="Start Date"
-            placeholder="Start Date"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-          <DatePicker
-            name="End Date"
-            label="End Date"
-            placeholder="End Date"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-          />
-          <Form.Input
-            fluid
-            name="note"
-            label="Note"
-            placeholder="Note"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
+            search
+            selection
+            options={countryOptions}
           />
         </Modal.Content>
         <Modal.Actions>
           <Button type="submit" color="orange">
-            Create New Vacation
+            Update Vacation
           </Button>
         </Modal.Actions>
       </Modal>
