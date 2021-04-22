@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FormStyles.css";
 
-function NewVacationForm({ userID, vacationData }) {
+function NewVacationForm({ userID, vacationData, setRerender }) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -60,10 +60,9 @@ function NewVacationForm({ userID, vacationData }) {
       },
     })
       .then((r) => r.json())
-      .then((data) => test(data));
+      .then((data) => setRerender(data));
   };
 
-  function test(test) {}
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -103,7 +102,7 @@ const deleteHandler = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-      test(data);
+      setRerender(data);
     })
 
 }

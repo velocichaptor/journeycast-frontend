@@ -10,12 +10,13 @@ function Body() {
   const [week, setSelectedWeek] = useState([]);
   const [vacationData, setVacationData] = useState([]);
   const [user, setUser] = useState("")
+  const [rerender, setRerender] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:3000/vacations`)
       .then((r) => r.json())
       .then((data) => vacationDataFunction(data));
-  }, []);
+  }, [rerender]);
 
   function vacationDataFunction(data) {
     setVacationData(data);
@@ -35,11 +36,13 @@ function Body() {
       {login ? (
         <div>
           <NavBar userID={user} 
-          vacationData={vacationData}/>
+          vacationData={vacationData}
+          setRerender={setRerender}/>
           <MonthCalendar
             vacationData={vacationData}
             setSelectedWeekFunction={setSelectedWeekFunction}
             userID={user}
+            
           />
           <WeeklyCalendar week={week} />
         </div>

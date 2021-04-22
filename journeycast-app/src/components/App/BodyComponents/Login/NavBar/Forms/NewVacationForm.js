@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FormStyles.css";
 
-function NewVacationForm({ userID }) {
+function NewVacationForm({ userID, setRerender }) {
   const [title, setTitle] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -51,7 +51,7 @@ function NewVacationForm({ userID }) {
       },
     })
       .then((r) => r.json())
-      .then((data) => test(data));
+      .then((data) => setRerender(data));
   };
 
   const submitHandler = (e) => {
@@ -59,7 +59,6 @@ function NewVacationForm({ userID }) {
     handleNewVacation({ title, note, startDate, endDate });
   };
 
-  function test(test) {}
 
   return (
     <div className="App">
