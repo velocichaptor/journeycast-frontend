@@ -9,6 +9,7 @@ function Body() {
   const [login, setLogin] = useState(false);
   const [week, setSelectedWeek] = useState([]);
   const [vacationData, setVacationData] = useState([]);
+  const [user, setUser] = useState("")
 
   useEffect(() => {
     fetch(`http://localhost:4000/vacations`)
@@ -24,16 +25,18 @@ function Body() {
     setSelectedWeek(selectedWeek);
   }
 
-  function loginToggle() {
+  function loginToggle(userId) {
     setLogin(login => !login);
+    setUser(userId)
   }
 
   return (
     <div>
       {login ? (
         <div>
-          <NavBar />
+          <NavBar userID={user}/>
           <MonthCalendar
+            userID={user}
             vacation={vacationData}
             setSelectedWeekFunction={setSelectedWeekFunction}
           />
