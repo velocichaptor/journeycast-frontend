@@ -10,6 +10,7 @@ function NewVacationForm({ userID }) {
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
 
+
   console.log("start date is", startDate);
   console.log("end date is", endDate);
 
@@ -57,6 +58,8 @@ function NewVacationForm({ userID }) {
     e.preventDefault();
     handleNewVacation({ title, note, startDate, endDate });
   };
+
+  function test(test) {}
 
   return (
     <div className="App">
