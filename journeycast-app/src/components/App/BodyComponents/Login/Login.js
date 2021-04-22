@@ -1,26 +1,42 @@
 import React, {useState, useEffect} from "react";
 import SignUp from "./SignUp"
-import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+import { Button, Divider, Form, Grid, SearchCategory, Segment } from 'semantic-ui-react'
 const endpoint = "http://localhost:3000/users"
 
-function Login() {
+function Login({loginToggle}) {
   const [signup, setSignup] = useState(false)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [user, setUser] = useState([])
 
   useEffect(() => {
-    fetch(endpoint + "/1")
-    .then(res => res.json())
-    .then(user => {
-      // console.log(transactions)
-      loginHandle(user)
-    })
-  }, [])
+    fetch(`http://localhost:3000/users`)
+      .then((r) => r.json())
+      .then((data) => setUser(data));
+  }, []);
+
+ 
 
   const signupInit = () => {
     setSignup(signup => !signup)
   }
 
-  const loginHandle = (user) => {
-    return null
+  const loginSubmit = (e) => {
+    //reference the username and password with the database
+    //return 
+    const user = ({username, password})
+    e.preventDefault()
+    loginHandle(user)
+  }
+
+  function loginHandle(userObj){
+
+  const userToLogin  = user.filter(userItem => userItem.username === userObj.username);
+  // debugger
+  const userId = userToLogin[0].id 
+  loginToggle(userId)
+
+
   }
 
 return (
@@ -29,18 +45,22 @@ return (
        ( <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>
       <Grid.Column>
-        <Form>
+        <Form onSubmit={loginSubmit} >
           <Form.Input
             icon='user'
             iconPosition='left'
             label='Username'
             placeholder='Username'
+            onChange={(e) => setUsername(e.target.value)} 
+            value={username}
           />
           <Form.Input
             icon='lock'
             iconPosition='left'
             label='Password'
             type='password'
+            onChange={(e) => setPassword(e.target.value)} 
+            value={password}
           />
 
           <Button content='Login' primary />

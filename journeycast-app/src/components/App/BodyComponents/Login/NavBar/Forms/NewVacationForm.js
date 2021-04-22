@@ -1,11 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { Button, Header, Image, Modal, Form } from "semantic-ui-react";
+import SemanticDatepicker from "react-semantic-ui-datepickers";
+import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 import "./FormStyles.css";
 
-function NewVacationForm() {
-  const [title, setTitle] = useState([])
-  const [startDate, setStartDate] = useState([])
-  const [endDate, setEndDate] = useState([])
-  const [note, setNote] = useState([])
+function NewVacationForm({ userID }) {
+  const [title, setTitle] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [note, setNote] = useState("");
+
+
+  // console.log({ userID })
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -34,56 +40,86 @@ function NewVacationForm() {
   // }
 
   function handleNewVacation(e) {
-    e.preventDefault();
-    fetch(`http://localhost:4000/vacations`, {
+    fetch(`http://localhost:3000/vacations`, {
       method: "POST",
       body: JSON.stringify({
         title: title,
+        user_id: 1,
+        location_id: 1,
         start_date: startDate,
         end_date: endDate,
         note: note,
+        // user_id: 1,
         // content: content,
       }),
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": 'application/json',
+        "Accept": 'application/json'
       },
-    }).then((r) => r.json());
-    // .then((newPoemData) => onAdd(newPoemData));
+    })
+      .then((r) => r.json())
+      .then((data) => test(data));
+      // debugger
   }
 
-  return (
-    <div >
-      <a id="myBtn" onClick={openWindowFunction}>
-        Create New Vacation
-      </a>
+//   const submitHandler = (e) => {
+//     e.preventDefault()
+//     handleNewVacation({title, note})
+//     setTitle('')
+//     setNote('')
+//     // setUsername('')
+//     // setPassword('')
+// }
 
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onClick={closeWindowFunction}>
-            &times;
-            <form className="new-poem-form" onSubmit={handleNewVacation}>
-              <input
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              {/* <input
-                placeholder="Author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-              />
-              <textarea
-                placeholder="Write your masterpiece here..."
-                rows={10}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              /> */}
-              <input type="submit" value="Add New Vacation" />
-            </form>
-          </span>
-          <p>TEST</p>
-        </div>
-      </div>
+  function test(test) {}
+
+  // const [open, setOpen] = React.useState(false);
+
+  return (
+    <div className="App" >
+      <Modal as={Form} trigger={<a>Create New Vacation</a>} size="small" onSubmit={handleNewVacation}>
+        <Header content="Create A New Vacation" />
+        <Modal.Content>
+          <Form.Input
+            fluid
+            name="title"
+            label="Title"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <SemanticDatepicker
+            fluid
+            name="Start Date"
+            label="Start Date"
+            placeholder="     Start Date"
+            // value={startDate}
+            // onChange={(e) => setStartDate(e.target.value)}
+          />
+          <br />
+          <SemanticDatepicker
+            fluid
+            name="End Date"
+            label="End Date"
+            placeholder="     End Date"
+            // value={title}
+            // onChange={(e) => setTitle(e.target.value)}
+          />
+          <Form.Input
+            fluid
+            name="note"
+            label="Note"
+            placeholder="Note"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+          />
+        </Modal.Content>
+        <Modal.Actions>
+          <Button type="submit" color="orange">
+            Create New Vacation
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   );
 }

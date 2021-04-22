@@ -9,9 +9,11 @@ function Body() {
   const [login, setLogin] = useState(false);
   const [week, setSelectedWeek] = useState([]);
   const [vacationData, setVacationData] = useState([]);
+  const [user, setUser] = useState("")
+
 
   useEffect(() => {
-    fetch(`http://localhost:4000/vacations`)
+    fetch(`http://localhost:3000/vacations`)
       .then((r) => r.json())
       .then((data) => vacationDataFunction(data));
   }, []);
@@ -24,23 +26,25 @@ function Body() {
     setSelectedWeek(selectedWeek);
   }
 
-  function loginToggle() {
-    setLogin(login => !login);
+  function loginToggle(userId) {
+    setLogin((login) => !login);
+    setUser(userId);
   }
 
   return (
     <div>
       {login ? (
         <div>
-          <NavBar />
+          <NavBar userID={user} />
           <MonthCalendar
             vacation={vacationData}
             setSelectedWeekFunction={setSelectedWeekFunction}
+            userID={user}
           />
           <WeeklyCalendar week={week} />
         </div>
       ) : (
-        <Login loginToggle={loginToggle}/>
+        <Login loginToggle={loginToggle} />
       )}
       <Container>
         <img

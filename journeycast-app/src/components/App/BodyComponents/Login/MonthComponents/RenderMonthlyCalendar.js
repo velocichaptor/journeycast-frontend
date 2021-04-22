@@ -4,15 +4,27 @@ import "./MonthlyCalendarStyles.css";
 import BuildCalendar from "./BuildMonthlyCalendar";
 import Header from "./MonthlyCalendarHeader";
 
-function MonthCalendar({ setSelectedWeekFunction, vacation }) {
+function MonthCalendar({ setSelectedWeekFunction, vacation, userID }) {
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
   const [setsOfVacations, setSetsOfVacations] = useState([]);
 
-  const setsOfVacationsArray = vacation.map((vacationObj) => [
+  // const setsOfVacationsArray = vacation.map((vacationObj) => [
+  //   ...vacationObj.vacation_days,
+  // ]);
+
+  console.log("The user ID is", userID)
+
+
+  const setsOfVacationsArray  = vacation.filter(vacationItem => vacationItem.user_id === userID);
+
+  console.log(vacation)
+
+  const userVacations = setsOfVacationsArray.map((vacationObj) => [
     ...vacationObj.vacation_days,
   ]);
 
+  
   // useEffect(() => {
   //   const setsOfVacationsHolder = vacation.map((vacationObj) => [
   //     ...vacationObj.vacation_days,
@@ -43,9 +55,9 @@ function MonthCalendar({ setSelectedWeekFunction, vacation }) {
   // }
 
   function isVacationDay(day) {
-    for (const property in setsOfVacationsArray) {
-      for (let i = 0, l = setsOfVacationsArray[property].length; i < l; i++) {
-        if (day.isSame(setsOfVacationsArray[property][i], "day")) {
+    for (const property in userVacations) {
+      for (let i = 0, l = userVacations[property].length; i < l; i++) {
+        if (day.isSame(userVacations[property][i], "day")) {
           return true;
         }
       }
