@@ -9,7 +9,10 @@ function NewVacationForm({ userID, vacationData }) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
+  const [vacationId, setVacationID] = useState("")
   const [dropdownSelection, setDropdownSelection] = useState("");
+
+
 
   const setsOfVacationsArray = vacationData.filter(
     (vacationItem) => vacationItem.user_id === userID
@@ -36,15 +39,18 @@ function NewVacationForm({ userID, vacationData }) {
     modal.style.display = "none";
   }
 
-  const handleNewVacation = ({ title, startDate, endDate, note }) => {
-    fetch(`http://localhost:3000/vacations`, {
+  const handleUpdatedVacation = ({ title, startDate, endDate, note }) => {
+
+    console.log({ title, startDate, endDate, note })
+
+    fetch(`http://localhost:3000/vacations/${vacationId}`, {
       method: "PATCH",
       body: JSON.stringify({
         title: title,
         // user_id: userID,
         // location_id: 1,
-        // start_date: startDate,
-        // end_date: endDate,
+        start_date: startDate,
+        end_date: endDate,
         note: note,
         // day: 1,
       }),
@@ -57,15 +63,17 @@ function NewVacationForm({ userID, vacationData }) {
       .then((data) => test(data));
   };
 
+  function test(test) {}
+
   const submitHandler = (e) => {
     e.preventDefault();
-    handleNewVacation({ title, note, startDate, endDate });
+    handleUpdatedVacation({ title, note, startDate, endDate });
   };
 
   const optionsArray = [];
 
   for (var i = 0; i < setsOfVacationsArray.length; i++) {
-    console.log("data is", setsOfVacationsArray[i].title);
+    // console.log("data is", setsOfVacationsArray[i].title);
     optionsArray.push({
       value: setsOfVacationsArray[i].id,
       text: setsOfVacationsArray[i].title,
@@ -74,8 +82,10 @@ function NewVacationForm({ userID, vacationData }) {
   }
 
   const handleDropdown = (event, data) => {
+    // debugger
     for (var i = 0; i < setsOfVacationsArray.length; i++) {
       if (data.value === setsOfVacationsArray[i].id) {
+        setVacationID(data.value)
         setTitle(setsOfVacationsArray[i].title);
         setStartDate(setsOfVacationsArray[i].start_date);
         setEndDate(setsOfVacationsArray[i].end_date);
@@ -84,7 +94,7 @@ function NewVacationForm({ userID, vacationData }) {
     }
   };
 
-  console.log(dropdownSelection);
+  // console.log(dropdownSelection);
 
   return (
     <div className="App">
