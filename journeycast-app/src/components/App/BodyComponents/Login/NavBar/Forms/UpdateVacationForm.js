@@ -96,6 +96,18 @@ function NewVacationForm({ userID, vacationData }) {
 
   // console.log(dropdownSelection);
 
+const deleteHandler = () => {
+
+  fetch(`http://localhost:3000/vacations/${vacationId}`, {
+      method: "DELETE",
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      test(data);
+    })
+
+}
+
   return (
     <div className="App">
       <Modal
@@ -147,7 +159,7 @@ function NewVacationForm({ userID, vacationData }) {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button type="submit" color="red">
+          <Button onClick={deleteHandler} color="red">
             Delete Vacation
           </Button>
           <Button type="submit" color="orange">
