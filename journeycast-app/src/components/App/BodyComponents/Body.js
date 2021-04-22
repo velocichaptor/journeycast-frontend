@@ -11,7 +11,6 @@ function Body() {
   const [vacationData, setVacationData] = useState([]);
   const [user, setUser] = useState("")
 
-
   useEffect(() => {
     fetch(`http://localhost:3000/vacations`)
       .then((r) => r.json())

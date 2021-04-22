@@ -10,7 +10,6 @@ function NewVacationForm({ userID }) {
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
 
-
   // console.log({ userID })
 
   // Get the modal
@@ -53,31 +52,36 @@ function NewVacationForm({ userID }) {
         // content: content,
       }),
       headers: {
-        "Content-Type": 'application/json',
-        "Accept": 'application/json'
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
     })
       .then((r) => r.json())
       .then((data) => test(data));
-      // debugger
+    // debugger
   }
 
-//   const submitHandler = (e) => {
-//     e.preventDefault()
-//     handleNewVacation({title, note})
-//     setTitle('')
-//     setNote('')
-//     // setUsername('')
-//     // setPassword('')
-// }
+  //   const submitHandler = (e) => {
+  //     e.preventDefault()
+  //     handleNewVacation({title, note})
+  //     setTitle('')
+  //     setNote('')
+  //     // setUsername('')
+  //     // setPassword('')
+  // }
 
   function test(test) {}
 
   // const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="App" >
-      <Modal as={Form} trigger={<a>Create New Vacation</a>} size="small" onSubmit={handleNewVacation}>
+    <div className="App">
+      <Modal
+        as={Form}
+        trigger={<a>Create New Vacation</a>}
+        size="small"
+        onSubmit={handleNewVacation}
+      >
         <Header content="Create A New Vacation" />
         <Modal.Content>
           <Form.Input
