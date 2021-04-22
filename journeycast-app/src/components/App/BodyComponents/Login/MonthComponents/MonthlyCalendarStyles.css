@@ -3,7 +3,7 @@
 .calendar {
   box-sizing: border-box;
   font-size: 1rem;
-  max-width: 378px;
+  width: 100vw;
   font-family: 'Titillium Web', sans-serif;
   font-style: normal;
   position: fixed;
@@ -24,7 +24,7 @@
 .calendar .day-names {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  width: 100vw;
   margin: 0 auto;
   align-items: center;
 }

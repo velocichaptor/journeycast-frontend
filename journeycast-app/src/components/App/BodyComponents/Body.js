@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./Login/Login";
 import WeeklyCalendar from "./Login/WeeklyCalendarComponents/RenderWeeklyCalendar";
 import MonthCalendar from "./Login/MonthComponents/RenderMonthlyCalendar";
-import { Container } from "semantic-ui-react";
+import { Container, Segment, Grid } from "semantic-ui-react";
 import NavBar from "./Login/NavBar/NavBar";
 
 function Body() {
@@ -44,16 +44,20 @@ function Body() {
             userID={user}
             
           />
-          <WeeklyCalendar week={week} />
+          <WeeklyCalendar 
+          week={week} 
+          userID={user}
+          vacationData={vacationData}
+           />
         </div>
       ) : (
         <Login loginToggle={loginToggle} />
       )}
       <Container>
-        <img
+        {/* <img
           class="ui fluid image"
           src="https://www.uaf.edu/oip/travelalerts/Travel-Alerts-Page-Picture.jpg"
-        ></img>
+        ></img> */}
       </Container>
     </div>
   );

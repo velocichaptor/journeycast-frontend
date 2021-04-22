@@ -10,10 +10,6 @@ function NewVacationForm({ userID, setRerender }) {
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
 
-
-  console.log("start date is", startDate);
-  console.log("end date is", endDate);
-
   // Get the modal
   var modal = document.getElementById("myModal");
 
