@@ -65,7 +65,7 @@ function MonthCalendar({ setSelectedWeekFunction, vacationData, userID }) {
     if (isSelected(day)) return "selected";
     // if (isToday(day)) return "today";
     if (isVacationDay(day)) return "vacationDay";
-    return "";
+    return "normal";
   }
 
   return (

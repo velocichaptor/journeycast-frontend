@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import {
-  Container
-} from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import "./WeeklyCalendarStyles.css";
 // import BuildCalendar from "./BuildWeeklyCalendar";
 import Header from "./WeeklyCalendarHeader";
 
 function WeekCalendar({ week, userID, vacationData }) {
-  
   // const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
 
@@ -19,11 +16,12 @@ function WeekCalendar({ week, userID, vacationData }) {
   //   week.map((day) => ((console.log("TEST", day.format("D").toString()))))
   // }
 
-  const setsOfVacationsArray  = vacationData.filter(vacationItem => vacationItem.user_id === userID);
-
+  const setsOfVacationsArray = vacationData.filter(
+    (vacationItem) => vacationItem.user_id === userID
+  );
 
   const userVacations = setsOfVacationsArray.map((vacationObj) => [
-    ...vacationObj.vacation_days, 
+    ...vacationObj.vacation_days,
   ]);
 
   function isSelected(day) {
@@ -50,7 +48,7 @@ function WeekCalendar({ week, userID, vacationData }) {
       for (let i = 0, l = userVacations[property].length; i < l; i++) {
         if (day.isSame(userVacations[property][i], "day")) {
           // console.log(true)
-         return true;
+          return true;
         }
       }
     }
@@ -58,51 +56,51 @@ function WeekCalendar({ week, userID, vacationData }) {
 
   function renderVacationNotes(day) {
     for (const property in setsOfVacationsArray) {
-
-
-      for (let i = 0, l = userVacations[property].length; i < l; i++) {
-        console.log(setsOfVacationsArray)
-        if (day.isSame(userVacations[property][i], "day")) {
-          debugger
-          // console.log(setsOfVacationsArray)
-         return true;
+      for (let i = 0, l = setsOfVacationsArray.length; i < l; i++) {
+        for (
+          let i2 = 0, l = setsOfVacationsArray[i].vacation_days.length;
+          i2 < l;
+          i2++
+        ) {
+          if (day.isSame(setsOfVacationsArray[i].vacation_days[i2], "day")) {
+            return(setsOfVacationsArray[i].title);
+          }
         }
       }
     }
   }
- 
 
   function dayStyles(day) {
     if (beforeToday(day)) return "before";
-    if (isSelected(day)) return "selected";
+    // if (isSelected(day)) return "selected";
     // if (isToday(day)) return "today";
     if (isVacationDay(day)) return "vacationDay";
     return "";
   }
 
-  const testProp = () => {
-    console.log("hello", {setsOfVacationsArray})
-  }
+  // const testProp = () => {
+  //   console.log("hello", { setsOfVacationsArray });
+  // };
 
   return (
     <Container>
-    <div className="weeklyCalendar">
-      <Header value={value} setValue={setValue} />
-      <div className="body">
-        <div className="day-names">
-          {["s", "m", "t", "w", "t", "f", "s"].map((d) => (
-            <div className="week">{d}</div>
+      <div className="weeklyCalendar">
+        <Header value={value} setValue={setValue} />
+        <div className="body">
+          <div className="day-names">
+            {["s", "m", "t", "w", "t", "f", "s"].map((d) => (
+              <div className="week">{d}</div>
+            ))}
+          </div>
+          {week.map((day) => (
+            <div className="day" onClick={() => setValue(day)}>
+              <div className={dayStyles(day)}>{day.format("D").toString()}</div>
+              <div className="dayInfo"> {renderVacationNotes(day)}</div>
+              {/* <button onClick={testProp}> blep</button> */}
+            </div>
           ))}
         </div>
-        {week.map((day) => (
-          <div className="day" onClick={() => setValue(day)}>
-            <div className={dayStyles(day)}>{day.format("D").toString()}</div>
-            <div className="dayInfo">{renderVacationNotes(day)}</div>
-            <button onClick={testProp}> blep</button>
-          </div>
-        ))}
       </div>
-    </div>
     </Container>
   );
 }
