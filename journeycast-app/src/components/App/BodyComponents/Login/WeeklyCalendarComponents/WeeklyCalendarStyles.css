@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap");
 
 /* .weeklyweeklyCalendar { // old styling
   box-sizing: border-box;
@@ -16,170 +16,203 @@
   box-sizing: border-box;
   font-size: 1rem;
   width: 80vw;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-style: normal;
   position: fixed;
   top: 0;
   right: 0;
 }
 
-  .weeklyCalendar .header {
-  	background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    text-align: center;
-    min-height: 2rem;
-    line-height: 2rem;
-    color: white;
-    font-weight: 700;
-    display: flex;
+.weeklyCalendar .header {
+  background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  text-align: center;
+  min-height: 2rem;
+  line-height: 2rem;
+  color: white;
+  font-weight: 700;
+  display: flex;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.weeklyCalendar .day-names {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.weeklyCalendar .body {
+
+  padding: 1rem;
+  position: relative;
+background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 0px;
+  height: 9.7vh;
+}
+
+.weeklyCalendar .header .previous {
+  flex: 1;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.weeklyCalendar .header .next {
+  flex: 1;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.weeklyCalendar .week {
+  background-color: #dee0e7;
+  width: calc(100% / 7);
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-weight: 400;
+}
+.weeklyCalendar .week div {
+  width: 100%;
+}
+
+/* .weeklyCalendar .dayInfo {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: inline-block;
+  background-color: #;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: center;
+}
+
+.weeklyCalendar .dayInfo div {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+  line-height: 44px;
+} */
+
+.weeklyCalendar .day {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: center;
+}
+
+.weeklyCalendar .day div {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+  line-height: 44px;
+}
+
+.weeklyCalendar .day div.before {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  z-index: 100;
+  line-height: 44px;
+
+  color: var(--grey);
+  background-color: white;
+}
+/* 
+.weeklyCalendar .day div.selected {
+  width: 100%;
+  height: 44px;
+  z-index: 100;
+  background-color: #23d5ab;
+  position: relative;
+
+  color: white;
+  font-weight: bolder;
+  /* border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin:auto; */
+
+
+.weeklyCalendar .day div.today {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+
+  color: white;
+}
+
+.weeklyCalendar .day div.normal {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+
+  background-color: white;
+  color: var(--black);
+}
+
+.weeklyCalendar .day div.vacationDay {
+  width: 100%;
+  height: 44px;
+  position: relative;
+  color: var(--black);
+  z-index: 100;
+
+  color: white;
+}
+
+/* @keyframes radial-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
   }
-  
-  .weeklyCalendar .day-names {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80vw;
-    margin: 0 auto;
-    align-items: center;
-  }
-  
-  .weeklyCalendar .body {
-    padding: 1rem;
-    position: relative;
-    background: linear-gradient(to left, #ffffff , #ffffff);
-    padding: 0px;
-    height: 63vh;
-  }
-  
-  .weeklyCalendar .header .previous {
-    flex: 1;
-    text-align: left;
-    margin-left: 1rem;
-  }
-  
-  .weeklyCalendar .header .next {
-    flex: 1;
-    text-align: right;
-    margin-right: 1rem;
-  }
-  
-  .weeklyCalendar .week {
-    background-color: #dee0e7;
-    width: calc(100% / 7);
-    height: 44px;
-    line-height: 44px;
-    text-align: center;
-    text-transform: uppercase;
-    color: rgb(0, 0, 0);
-    font-weight: 400;
-  }
-  .weeklyCalendar .week div {
-    width: 100%;
-  }
-  
-  .weeklyCalendar .day {
-    position: relative;
-    width: calc(100% / 7);
-    height: 44px;
-    display: inline-block;
-    /* background-color: white; */
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    z-index: 1;
-    text-align: center;
-  }
-  
-  .weeklyCalendar .day div {
-    width: 100%;
-    height: 44px;
-    position: relative;
-    color: rgb(85, 82, 82);
-    z-index: 100;
-    line-height: 44px;
-  }
+}
 
-  .weeklyCalendar .dayInfo {
-    position: relative;
-    width: calc(100% / 7);
-    height: 44px;
-    display: inline-block;
-    background-color: #;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    z-index: 1;
-    text-align: center;
-  }
-  
-  .weeklyCalendar .dayInfo div {
-    width: 100%;
-    height: 44px;
-    position: relative;
-    color: var(--black);
-    z-index: 100;
-    line-height: 44px;
-  }
-  
-  .weeklyCalendar .day div.before {
-    color: var(--grey);
-  }
-
-
-  .weeklyCalendar .day div.selected {
-    background:#cb77ff;
-    color: white;
-    font-weight:bolder;
-    /* border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin:auto; */
-  }
-  
-  /* .weeklyCalendar .day div.today {
-    background-color: #FF77FF;
-    color: white;
-  } */
-  
-  .weeklyCalendar .day div.vacationDay {
-    background-color: #40b0e0;
-    color: white;
-  }
-  
-  
-  /* @keyframes radial-pulse {
-    0% {
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
-    }
-  
-    100% {
-      box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
-    }
-  }
-  
-  div {
-    margin: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    color:white;
-    font-weight:bold;
-    font-family: Arial;
-    background: rgba(0,0,255,0.75);
-    border-radius: 50%;
-    animation: radial-pulse 1s infinite;
-  } */
+div {
+  margin: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  color:white;
+  font-weight:bold;
+  font-family: Arial;
+  background: rgba(0,0,255,0.75);
+  border-radius: 50%;
+  animation: radial-pulse 1s infinite;
+} */

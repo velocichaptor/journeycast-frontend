@@ -9,10 +9,8 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [note, setNote] = useState("");
-  const [vacationId, setVacationID] = useState("")
+  const [vacationId, setVacationID] = useState("");
   const [dropdownSelection, setDropdownSelection] = useState("");
-
-
 
   const setsOfVacationsArray = vacationData.filter(
     (vacationItem) => vacationItem.user_id === userID
@@ -40,8 +38,7 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
   }
 
   const handleUpdatedVacation = ({ title, startDate, endDate, note }) => {
-
-    console.log({ title, startDate, endDate, note })
+    console.log({ title, startDate, endDate, note });
 
     fetch(`http://localhost:3000/vacations/${vacationId}`, {
       method: "PATCH",
@@ -63,7 +60,6 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
       .then((data) => setRerender(data));
   };
 
-
   const submitHandler = (e) => {
     e.preventDefault();
     handleUpdatedVacation({ title, note, startDate, endDate });
@@ -81,10 +77,9 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
   }
 
   const handleDropdown = (event, data) => {
-    // debugger
     for (var i = 0; i < setsOfVacationsArray.length; i++) {
       if (data.value === setsOfVacationsArray[i].id) {
-        setVacationID(data.value)
+        setVacationID(data.value);
         setTitle(setsOfVacationsArray[i].title);
         setStartDate(setsOfVacationsArray[i].start_date);
         setEndDate(setsOfVacationsArray[i].end_date);
@@ -93,32 +88,30 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
     }
   };
 
-  // console.log(dropdownSelection);
-
-const deleteHandler = () => {
-
-  fetch(`http://localhost:3000/vacations/${vacationId}`, {
+  const deleteHandler = () => {
+    fetch(`http://localhost:3000/vacations/${vacationId}`, {
       method: "DELETE",
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setRerender(data);
-    })
-
-}
+      .then((response) => response.json())
+      .then((data) => {
+        setRerender(data);
+      });
+  };
 
   return (
     <div className="App">
       <Modal
         as={Form}
-        trigger={<a>Update Your Vacations</a>}
+        trigger={<a>Update Vacation</a>}
         size="small"
         onSubmit={submitHandler}
       >
         <Header content="Update Your Vacations" />
         <Modal.Content>
           <Dropdown
-            placeholder="Select Country"
+            placeholder="Select a Vacation"
+            name="Title"
+            label="Title"
             fluid
             search
             selection
@@ -158,10 +151,10 @@ const deleteHandler = () => {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button onClick={deleteHandler} color="red">
+          <Button onClick={deleteHandler} color="pink">
             Delete Vacation
           </Button>
-          <Button type="submit" color="orange">
+          <Button type="submit" color="purple">
             Update Vacation
           </Button>
         </Modal.Actions>

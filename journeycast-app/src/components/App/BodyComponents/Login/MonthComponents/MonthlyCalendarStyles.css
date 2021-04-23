@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap");
 
 .calendar {
   box-sizing: border-box;
   background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   font-size: 1rem;
   width: 80vw;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-style: normal;
   position: fixed;
   bottom: 0;
@@ -15,9 +15,9 @@
 }
 
 .calendar .header {
-	background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+  background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   text-align: center;
   min-height: 2rem;
   line-height: 2rem;
@@ -26,17 +26,16 @@
   display: flex;
 }
 
-
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .calendar .day-names {
@@ -49,10 +48,11 @@
 
 .calendar .body {
   padding: 1rem;
-  position:;
-	background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;  padding: 0px;
+  position: ;
+  background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 0px;
   height: 29.2vh;
 }
 
@@ -122,7 +122,7 @@
   position: relative;
 
   color: white;
-  font-weight:bolder;
+  font-weight: bolder;
   /* border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -135,7 +135,6 @@
   position: relative;
   color: var(--black);
   z-index: 100;
-
 
   color: white;
 }
@@ -160,7 +159,6 @@
 
   color: white;
 }
-
 
 /* @keyframes radial-pulse {
   0% {

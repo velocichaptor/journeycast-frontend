@@ -9,8 +9,11 @@ ul {
   width: 20vw;
   height: 100vh;
   font-family: "Titillium Web", sans-serif;
-  background-image: linear-gradient(to right, #434647, #5e5e5e);
-  background-color: #ffffff;
+  background: linear-gradient(-45deg, #272626, #4f5050, #060606);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+
+  /* background-color: #ffffff; */
 
   /* position: fixed;
   border: 10px solid;
@@ -19,10 +22,22 @@ ul {
   border-image-source: linear-gradient(to right, #ff5f6d, #ffc371); */
 }
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 li a {
   text-align: left;
   display: block;
-  background-color: #3c3e3f;
+  /* background-color: #3c3e3f; */
   color: rgb(255, 255, 255);
   padding: 8px 16px;
   text-decoration: none;
@@ -56,9 +71,8 @@ button:hover {
 
 img {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 14px;
+  left: 11px;
   max-width: 18vw;
   margin: 0 auto;
-  background-color: ;
 }

@@ -60,7 +60,7 @@ function NewVacationForm({ userID, setRerender }) {
     <div className="App">
       <Modal
         as={Form}
-        trigger={<a>Create New Vacation</a>}
+        trigger={<a>New Vacation</a>}
         size="small"
         onSubmit={submitHandler}
       >
@@ -98,7 +98,7 @@ function NewVacationForm({ userID, setRerender }) {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button type="submit" color="orange">
+          <Button type="submit" color="purple">
             Create New Vacation
           </Button>
         </Modal.Actions>

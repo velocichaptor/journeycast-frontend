@@ -24,9 +24,9 @@ function WeekCalendar({ week, userID, vacationData }) {
     ...vacationObj.vacation_days,
   ]);
 
-  function isSelected(day) {
-    return value.isSame(day, "day");
-  }
+  // function isSelected(day) {
+  //   return value.isSame(day, "day");
+  // }
 
   function beforeToday(day) {
     return day.isBefore(new Date(), "day");
@@ -34,13 +34,6 @@ function WeekCalendar({ week, userID, vacationData }) {
 
   function isToday(day) {
     return day.isSame(new Date(), "day");
-  }
-
-  function dayStyles(day) {
-    if (beforeToday(day)) return "before";
-    if (isSelected(day)) return "selected";
-    if (isToday(day)) return "today";
-    return "";
   }
 
   function isVacationDay(day) {
@@ -55,16 +48,14 @@ function WeekCalendar({ week, userID, vacationData }) {
   }
 
   function renderVacationNotes(day) {
-    for (const property in setsOfVacationsArray) {
-      for (let i = 0, l = setsOfVacationsArray.length; i < l; i++) {
-        for (
-          let i2 = 0, l = setsOfVacationsArray[i].vacation_days.length;
-          i2 < l;
-          i2++
-        ) {
-          if (day.isSame(setsOfVacationsArray[i].vacation_days[i2], "day")) {
-            return(setsOfVacationsArray[i].title);
-          }
+    for (let i = 0, l = setsOfVacationsArray.length; i < l; i++) {
+      for (
+        let i2 = 0, l = setsOfVacationsArray[i].vacation_days.length;
+        i2 < l;
+        i2++
+      ) {
+        if (day.isSame(setsOfVacationsArray[i].vacation_days[i2], "day")) {
+          return setsOfVacationsArray[i].title;
         }
       }
     }
@@ -75,12 +66,8 @@ function WeekCalendar({ week, userID, vacationData }) {
     // if (isSelected(day)) return "selected";
     // if (isToday(day)) return "today";
     if (isVacationDay(day)) return "vacationDay";
-    return "";
+    return "normal";
   }
-
-  // const testProp = () => {
-  //   console.log("hello", { setsOfVacationsArray });
-  // };
 
   return (
     <Container>
@@ -96,7 +83,6 @@ function WeekCalendar({ week, userID, vacationData }) {
             <div className="day" onClick={() => setValue(day)}>
               <div className={dayStyles(day)}>{day.format("D").toString()}</div>
               <div className="dayInfo"> {renderVacationNotes(day)}</div>
-              {/* <button onClick={testProp}> blep</button> */}
             </div>
           ))}
         </div>
