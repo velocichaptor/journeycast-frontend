@@ -63,7 +63,7 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   padding: 0px;
-  height: 9.7vh;
+  /* height: 9.7vh; */
 }
 
 .weeklyCalendar .header .previous {
@@ -92,17 +92,8 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   width: 100%;
 }
 
-/* .weeklyCalendar .dayInfo {
-  position: relative;
-  width: calc(100% / 7);
-  height: 44px;
-  display: inline-block;
-  background-color: #;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  z-index: 1;
-  text-align: center;
+.weeklyCalendar .dayInfo {
+  background-color: white;
 }
 
 .weeklyCalendar .dayInfo div {
@@ -112,7 +103,7 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   color: var(--black);
   z-index: 100;
   line-height: 44px;
-} */
+}
 
 .weeklyCalendar .day {
   position: relative;
