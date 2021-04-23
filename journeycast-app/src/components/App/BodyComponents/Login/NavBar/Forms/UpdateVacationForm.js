@@ -108,8 +108,8 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
       >
         <Header content="Update Your Vacations" />
         <Modal.Content>
+          Select Vacation
           <Dropdown
-            placeholder="Select a Vacation"
             name="Title"
             label="Title"
             fluid
@@ -126,6 +126,8 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          Start Date 
+          <br></br>
           <DatePicker
             name="Start Date"
             label="Start Date"
@@ -133,6 +135,9 @@ function NewVacationForm({ userID, vacationData, setRerender }) {
             value={startDate}
             onChange={(date) => setStartDate(date)}
           />
+          <br></br>
+          End Date 
+          <br></br>
           <DatePicker
             name="End Date"
             label="End Date"

@@ -107,7 +107,6 @@
   position: relative;
   z-index: 100;
   line-height: 44px;
-
   color: var(--grey);
   background-color: white;
 }

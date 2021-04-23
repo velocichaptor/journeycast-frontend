@@ -47,7 +47,7 @@ function WeekCalendar({ week, userID, vacationData }) {
     }
   }
 
-  function renderVacationNotes(day) {
+  function renderVacationInfo(day) {
     for (let i = 0, l = setsOfVacationsArray.length; i < l; i++) {
       for (
         let i2 = 0, l = setsOfVacationsArray[i].vacation_days.length;
@@ -55,7 +55,7 @@ function WeekCalendar({ week, userID, vacationData }) {
         i2++
       ) {
         if (day.isSame(setsOfVacationsArray[i].vacation_days[i2], "day")) {
-          return setsOfVacationsArray[i].title;
+          return [setsOfVacationsArray[i].title, <br/>, "Note:", <br/>, setsOfVacationsArray[i].note];
         }
       }
     }
@@ -74,17 +74,22 @@ function WeekCalendar({ week, userID, vacationData }) {
       <div className="weeklyCalendar">
         <Header value={value} setValue={setValue} />
         <div className="body">
-          <div className="day-names">
+          <div className="day-info">
             {["s", "m", "t", "w", "t", "f", "s"].map((d) => (
               <div className="week">{d}</div>
             ))}
+
+            {week.map((day) => (
+              <div className="day" onClick={() => setValue(day)}>
+                <div className={dayStyles(day)}>
+                  {day.format("D").toString()}
+                </div>
+
+                <div className="dayInfo"> {renderVacationInfo(day)} 
+                </div>
+              </div>
+            ))}
           </div>
-          {week.map((day) => (
-            <div className="day" onClick={() => setValue(day)}>
-              <div className={dayStyles(day)}>{day.format("D").toString()}</div>
-              <div className="dayInfo"> {renderVacationNotes(day)}</div>
-            </div>
-          ))}
         </div>
       </div>
     </Container>

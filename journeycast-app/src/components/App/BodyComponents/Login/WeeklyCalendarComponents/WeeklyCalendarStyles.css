@@ -47,23 +47,26 @@
   }
 }
 
-.weeklyCalendar .day-names {
+.weeklyCalendar .day-info {
   display: flex;
   flex-wrap: wrap;
   width: 80vw;
   margin: 0 auto;
   align-items: center;
+  text-align: left;
+}
+
+.weeklyCalendar .dayInfo {
+  /* background-color: red; */
 }
 
 .weeklyCalendar .body {
-
   padding: 1rem;
   position: relative;
-background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   padding: 0px;
-  /* height: 9.7vh; */
 }
 
 .weeklyCalendar .header .previous {
@@ -88,21 +91,9 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   color: rgb(0, 0, 0);
   font-weight: 400;
 }
+
 .weeklyCalendar .week div {
   width: 100%;
-}
-
-.weeklyCalendar .dayInfo {
-  background-color: white;
-}
-
-.weeklyCalendar .dayInfo div {
-  width: 100%;
-  height: 44px;
-  position: relative;
-  color: var(--black);
-  z-index: 100;
-  line-height: 44px;
 }
 
 .weeklyCalendar .day {
@@ -119,7 +110,7 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
 
 .weeklyCalendar .day div {
   width: 100%;
-  height: 44px;
+  height: 50vh;
   position: relative;
   color: var(--black);
   z-index: 100;
@@ -132,12 +123,11 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   position: relative;
   z-index: 100;
   line-height: 44px;
-
   color: var(--grey);
   background-color: white;
 }
-/* 
-.weeklyCalendar .day div.selected {
+
+/* .weeklyCalendar .day div.selected {
   width: 100%;
   height: 44px;
   z-index: 100;
@@ -145,12 +135,11 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   position: relative;
 
   color: white;
-  font-weight: bolder;
+  font-weight: bolder; */
   /* border-radius: 50%;
   width: 40px;
   height: 40px;
   margin:auto; */
-
 
 .weeklyCalendar .day div.today {
   width: 100%;
@@ -158,7 +147,6 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   position: relative;
   color: var(--black);
   z-index: 100;
-
   color: white;
 }
 
@@ -168,7 +156,6 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   position: relative;
   color: var(--black);
   z-index: 100;
-
   background-color: white;
   color: var(--black);
 }
@@ -179,31 +166,5 @@ background: linear-gradient(-45deg, #e73c7e, #23a6d5, #23d5ab);
   position: relative;
   color: var(--black);
   z-index: 100;
-
   color: white;
 }
-
-/* @keyframes radial-pulse {
-  0% {
-    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
-  }
-
-  100% {
-    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
-  }
-}
-
-div {
-  margin: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  color:white;
-  font-weight:bold;
-  font-family: Arial;
-  background: rgba(0,0,255,0.75);
-  border-radius: 50%;
-  animation: radial-pulse 1s infinite;
-} */

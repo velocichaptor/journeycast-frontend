@@ -55,7 +55,6 @@ function NewVacationForm({ userID, setRerender }) {
     handleNewVacation({ title, note, startDate, endDate });
   };
 
-
   return (
     <div className="App">
       <Modal
@@ -74,6 +73,8 @@ function NewVacationForm({ userID, setRerender }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          Start Date
+          <br></br>
           <DatePicker
             name="Start Date"
             label="Start Date"
@@ -81,6 +82,9 @@ function NewVacationForm({ userID, setRerender }) {
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
+          <br></br>
+          End Date
+          <br></br>
           <DatePicker
             name="End Date"
             label="End Date"
